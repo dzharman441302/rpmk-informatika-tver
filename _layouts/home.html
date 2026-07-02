@@ -1,0 +1,129 @@
+---
+layout: default
+---
+<main>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="eyebrow">Информационно-методический ресурс</div>
+        <h1>{{ page.hero_title | default: page.title }}</h1>
+        <p class="hero-text">{{ page.hero_text }}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="{{ '/vsoh/' | relative_url }}">Перейти к ВСОШ</a>
+          <a class="btn btn-secondary" href="{{ '/gia/' | relative_url }}">Материалы ГИА</a>
+          <a class="btn btn-secondary" href="{{ '/materials/' | relative_url }}">Все материалы</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Основные направления">
+        <div>
+          <h2>Основные направления</h2>
+          <p>Быстрый доступ к ключевым разделам работы комиссии.</p>
+          <div class="status-list">
+            <div class="status-item"><span>ВСОШ</span><strong>ШЭ · МЭ · РЭ</strong></div>
+            <div class="status-item"><span>ГИА</span><strong>ОГЭ · ЕГЭ</strong></div>
+            <div class="status-item"><span>Предмет</span><strong>Информатика</strong></div>
+            <div class="status-item"><span>Формат</span><strong>Новости · материалы · документы</strong></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Разделы сайта</h2>
+          <p class="section-note">Сайт построен так, чтобы педагог быстро переходил к нужному этапу олимпиады, экзамену или методическому материалу.</p>
+        </div>
+      </div>
+
+      <div class="directions">
+        <article class="direction-card">
+          <div class="direction-top">
+            <h3>ВСОШ</h3>
+            <span class="direction-icon">01</span>
+          </div>
+          <p>Документы и материалы по школьному, муниципальному и региональному этапам Всероссийской олимпиады школьников по информатике.</p>
+          <div class="chip-list">
+            <a class="chip" href="{{ '/vsoh/school/' | relative_url }}">Школьный этап</a>
+            <a class="chip" href="{{ '/vsoh/municipal/' | relative_url }}">Муниципальный этап</a>
+            <a class="chip" href="{{ '/vsoh/regional/' | relative_url }}">Региональный этап</a>
+          </div>
+        </article>
+
+        <article class="direction-card">
+          <div class="direction-top">
+            <h3>ГИА</h3>
+            <span class="direction-icon">02</span>
+          </div>
+          <p>Материалы для подготовки и методического сопровождения ОГЭ и ЕГЭ по информатике.</p>
+          <div class="chip-list">
+            <a class="chip" href="{{ '/gia/oge/' | relative_url }}">ОГЭ</a>
+            <a class="chip" href="{{ '/gia/ege/' | relative_url }}">ЕГЭ</a>
+            <a class="chip" href="{{ '/gia/recommendations/' | relative_url }}">Рекомендации</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Новости и обновления</h2>
+          <p class="section-note">Последние объявления, сроки, документы и методические обновления.</p>
+        </div>
+        <a class="section-link" href="{{ '/news/' | relative_url }}">Все новости →</a>
+      </div>
+
+      <div class="news-grid">
+        <div class="news-card">
+          {% assign latest_posts = site.posts | slice: 0, 3 %}
+          {% if latest_posts.size > 0 %}
+            {% for post in latest_posts %}
+              <article class="news-item">
+                <div class="date">{{ post.date | date: "%d.%m.%Y" }}</div>
+                <h3><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h3>
+                <p>{{ post.excerpt | strip_html | truncate: 165 }}</p>
+              </article>
+            {% endfor %}
+          {% else %}
+            <article class="news-item">
+              <div class="date">Раздел готов к наполнению</div>
+              <h3>Новости будут появляться здесь автоматически</h3>
+              <p>Добавьте первую запись через раздел администрирования сайта.</p>
+            </article>
+          {% endif %}
+        </div>
+
+        <aside class="materials-card">
+          <h3>Быстрый доступ</h3>
+          <a class="material-link" href="{{ '/vsoh/' | relative_url }}"><span>Всероссийская олимпиада школьников</span><b>→</b></a>
+          <a class="material-link" href="{{ '/gia/oge/' | relative_url }}"><span>ОГЭ по информатике</span><b>→</b></a>
+          <a class="material-link" href="{{ '/gia/ege/' | relative_url }}"><span>ЕГЭ по информатике</span><b>→</b></a>
+          <a class="material-link" href="{{ '/materials/' | relative_url }}"><span>Методические материалы</span><b>→</b></a>
+          <a class="material-link" href="{{ '/contacts/' | relative_url }}"><span>Контакты РПМК</span><b>→</b></a>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title">Назначение ресурса</h2>
+          <p class="section-note">Сайт задуман как рабочий инструмент для педагогов: найти документ, скачать материал, увидеть актуальное объявление.</p>
+        </div>
+      </div>
+      <div class="info-strip">
+        <article class="info-card"><strong>Для педагогов</strong><p>Методические рекомендации, материалы для подготовки обучающихся, инструкции и организационные документы.</p></article>
+        <article class="info-card"><strong>Для организаторов</strong><p>Материалы по проведению этапов ВСОШ, графики, требования, памятки и регламенты.</p></article>
+        <article class="info-card"><strong>Для участников</strong><p>Актуальная информация о мероприятиях, сроках, форматах проведения и доступных материалах.</p></article>
+      </div>
+    </div>
+  </section>
+</main>

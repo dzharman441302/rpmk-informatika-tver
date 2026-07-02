@@ -1,0 +1,43 @@
+title: "РПМК по информатике Тверской области"
+description: "Информационно-методический сайт региональной предметно-методической комиссии по информатике Тверской области"
+lang: ru-RU
+timezone: Europe/Moscow
+url: ""
+baseurl: ""
+
+permalink: /news/:year/:month/:day/:title/
+
+collections:
+  materials:
+    output: true
+    permalink: /materials/:name/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - CNAME.example
+  - .github/
+
+plugins: []
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: "materials"
+    values:
+      layout: material
+  - scope:
+      path: ""
+    values:
+      layout: page

@@ -1,0 +1,35 @@
+---
+layout: default
+title: "Новости"
+description: "Новости, объявления и обновления РПМК по информатике Тверской области."
+---
+<main>
+  <section class="page-hero">
+    <div class="container narrow">
+      <div class="eyebrow">Обновления</div>
+      <h1>Новости</h1>
+      <p class="lead">Актуальные объявления, сроки, документы и методические обновления.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container narrow content-card">
+      <div class="listing">
+        {% if site.posts.size > 0 %}
+          {% for post in site.posts %}
+            <article class="listing-card">
+              <div class="meta">{{ post.date | date: "%d.%m.%Y" }}</div>
+              <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+              <p>{{ post.excerpt | strip_html | truncate: 220 }}</p>
+            </article>
+          {% endfor %}
+        {% else %}
+          <article class="listing-card">
+            <h2>Пока нет опубликованных новостей</h2>
+            <p>Добавьте первую новость через раздел администрирования сайта.</p>
+          </article>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</main>

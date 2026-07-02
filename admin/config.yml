@@ -1,0 +1,99 @@
+# Админка сайта РПМК по информатике.
+# После создания репозитория замените OWNER/REPOSITORY на ваш GitHub-аккаунт и имя репозитория.
+
+backend:
+  name: github
+  repo: OWNER/REPOSITORY
+  branch: main
+  # Для входа через кнопку GitHub OAuth можно подключить OAuth-клиент.
+  # Тогда раскомментируйте строку ниже и укажите URL вашего OAuth proxy / Sveltia Authenticator:
+  # base_url: https://your-auth-worker.example.workers.dev
+
+# Для локальной разработки можно запустить CMS с local backend.
+# Обычному запуску на GitHub Pages это не мешает.
+local_backend: true
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+site_url: "https://example.ru"
+display_url: "https://example.ru"
+locale: "ru"
+
+collections:
+  - name: "news"
+    label: "Новости"
+    label_singular: "Новость"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{year}}-{{month}}-{{day}}"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Краткое описание", name: "description", widget: "text", required: false }
+      - { label: "Дата публикации", name: "date", widget: "datetime", format: "YYYY-MM-DD HH:mm:ss Z", date_format: "DD.MM.YYYY", time_format: "HH:mm", required: false }
+      - { label: "Текст новости", name: "body", widget: "markdown" }
+
+  - name: "materials"
+    label: "Материалы"
+    label_singular: "Материал"
+    folder: "_materials"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} · {{direction}} · {{category}}"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Краткое описание", name: "description", widget: "text", required: false }
+      - { label: "Дата", name: "date", widget: "date", format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", required: false }
+      - label: "Направление"
+        name: "direction"
+        widget: "select"
+        options: ["ВСОШ", "ГИА", "Методическая работа", "Новости РПМК"]
+        required: false
+      - label: "Категория"
+        name: "category"
+        widget: "select"
+        options: ["Школьный этап", "Муниципальный этап", "Региональный этап", "ОГЭ", "ЕГЭ", "Рекомендации", "Общие материалы"]
+        required: false
+      - { label: "Прикреплённый файл", name: "file", widget: "file", required: false }
+      - { label: "Текст / пояснение", name: "body", widget: "markdown", required: false }
+
+  - name: "pages"
+    label: "Страницы сайта"
+    files:
+      - label: "Главная"
+        name: "home"
+        file: "index.md"
+        fields:
+          - { label: "Макет", name: "layout", widget: "hidden", default: "home" }
+          - { label: "Заголовок страницы", name: "title", widget: "string" }
+          - { label: "Заголовок первого экрана", name: "hero_title", widget: "string" }
+          - { label: "Текст первого экрана", name: "hero_text", widget: "text" }
+          - { label: "Описание для поисковиков", name: "description", widget: "text", required: false }
+
+      - label: "ВСОШ"
+        name: "vsoh"
+        file: "vsoh/index.md"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Метка", name: "eyebrow", widget: "string", required: false }
+          - { label: "Описание", name: "description", widget: "text", required: false }
+          - { label: "Текст страницы", name: "body", widget: "markdown" }
+
+      - label: "ГИА"
+        name: "gia"
+        file: "gia/index.md"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Метка", name: "eyebrow", widget: "string", required: false }
+          - { label: "Описание", name: "description", widget: "text", required: false }
+          - { label: "Текст страницы", name: "body", widget: "markdown" }
+
+      - label: "Контакты"
+        name: "contacts"
+        file: "contacts/index.md"
+        fields:
+          - { label: "Заголовок", name: "title", widget: "string" }
+          - { label: "Метка", name: "eyebrow", widget: "string", required: false }
+          - { label: "Описание", name: "description", widget: "text", required: false }
+          - { label: "Текст страницы", name: "body", widget: "markdown" }

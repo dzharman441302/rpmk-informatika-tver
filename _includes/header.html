@@ -1,0 +1,20 @@
+<header class="topbar">
+  <div class="container topbar-inner">
+    <a class="brand" href="{{ '/' | relative_url }}" aria-label="На главную">
+      <span class="brand-mark">И</span>
+      <span>
+        <span class="brand-title">РПМК по информатике</span>
+        <span class="brand-subtitle">Тверская область</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <a href="{{ '/vsoh/' | relative_url }}" {% if page.url contains '/vsoh/' %}aria-current="page"{% endif %}>ВСОШ</a>
+      <a href="{{ '/gia/' | relative_url }}" {% if page.url contains '/gia/' %}aria-current="page"{% endif %}>ГИА</a>
+      <a href="{{ '/materials/' | relative_url }}" {% if page.url contains '/materials/' %}aria-current="page"{% endif %}>Материалы</a>
+      <a href="{{ '/news/' | relative_url }}" {% if page.url contains '/news/' %}aria-current="page"{% endif %}>Новости</a>
+      <a href="{{ '/contacts/' | relative_url }}" {% if page.url contains '/contacts/' %}aria-current="page"{% endif %}>Контакты</a>
+      <a class="admin-link" href="{{ '/admin/' | relative_url }}">Вход</a>
+    </nav>
+  </div>
+</header>

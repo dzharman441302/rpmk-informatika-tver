@@ -1,0 +1,40 @@
+---
+layout: default
+title: "Материалы"
+description: "Единый каталог методических материалов, документов и публикаций по информатике."
+---
+<main>
+  <section class="page-hero">
+    <div class="container narrow">
+      <div class="eyebrow">Каталог</div>
+      <h1>Материалы</h1>
+      <p class="lead">Методические рекомендации, документы, презентации, памятки и ссылки по ВСОШ и ГИА.</p>
+    </div>
+  </section>
+
+  <section class="content-section">
+    <div class="container narrow content-card">
+      <div class="listing">
+        {% assign sorted_materials = site.materials | sort: "date" | reverse %}
+        {% if sorted_materials.size > 0 %}
+          {% for material in sorted_materials %}
+            <article class="listing-card">
+              <div class="meta">
+                {% if material.date %}{{ material.date | date: "%d.%m.%Y" }}{% endif %}
+                {% if material.direction %} · {{ material.direction }}{% endif %}
+                {% if material.category %} · {{ material.category }}{% endif %}
+              </div>
+              <h2><a href="{{ material.url | relative_url }}">{{ material.title }}</a></h2>
+              {% if material.description %}<p>{{ material.description }}</p>{% endif %}
+            </article>
+          {% endfor %}
+        {% else %}
+          <article class="listing-card">
+            <h2>Каталог готов к наполнению</h2>
+            <p>Добавьте первый материал через раздел администрирования сайта.</p>
+          </article>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+</main>
