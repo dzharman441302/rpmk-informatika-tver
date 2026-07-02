@@ -16,8 +16,8 @@ local_backend: true
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-site_url: "https://рпмк-то.рф"
-display_url: "https://рпмк-то.рф"
+site_url: "https://xn----stbfkbfs.xn--p1ai"
+display_url: "https://xn----stbfkbfs.xn--p1ai"
 locale: "ru"
 
 collections:
