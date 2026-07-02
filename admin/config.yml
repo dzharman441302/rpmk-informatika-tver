@@ -3,7 +3,7 @@
 
 backend:
   name: github
-  repo: OWNER/REPOSITORY
+  repo: dzharman441302/rpmk-informatika-tver
   branch: main
   # Для входа через кнопку GitHub OAuth можно подключить OAuth-клиент.
   # Тогда раскомментируйте строку ниже и укажите URL вашего OAuth proxy / Sveltia Authenticator:
@@ -16,8 +16,8 @@ local_backend: true
 media_folder: "assets/uploads"
 public_folder: "/assets/uploads"
 
-site_url: "https://example.ru"
-display_url: "https://example.ru"
+site_url: "https://рпмк-то.рф"
+display_url: "https://рпмк-то.рф"
 locale: "ru"
 
 collections:
